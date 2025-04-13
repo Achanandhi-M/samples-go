@@ -4,7 +4,7 @@ pipeline {
         stage('Keploy Tests') {
             steps {
 
-                // Clone the repository
+                // Clone the git repository
                 git branch: 'chore/include-jenkins-pipeline-for-go-app', url: 'https://github.com/Achanandhi-M/samples-go'
 
                 // Download and prepare Keploy binary
@@ -13,7 +13,7 @@ pipeline {
 
                 // switch to the directory where keploy folder is present
                 dir('gin-mongo'){
-                    
+
                 sh"""
                 keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 10
                 """
