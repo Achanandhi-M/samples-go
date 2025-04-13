@@ -9,7 +9,7 @@ pipeline {
                 // Download and install Keploy binary
                 sh "curl --silent -O -L https://keploy.io/install.sh && source install.sh"
 
-                // switch to the directory and run tests
+                // switch to the directory and run test
                 dir('gin-mongo') {
                     sh """
                     keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 15
