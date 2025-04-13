@@ -3,19 +3,30 @@ pipeline {
     stages {
         stage('Setup Environment') {
             steps {
-                // Install Docker if not present (for Debian/Ubuntu agents)
-                sh """
+                // Install Docker if not present (for different OS environments)
+                sh '''
                 if ! command -v docker &> /dev/null; then
                     echo "Installing Docker..."
-                    sudo apt-get update
-                    sudo apt-get install -y docker.io
-                    sudo usermod -aG docker \$USER
+                    # Check the OS and install Docker accordingly
+                    if [[ "$(uname)" == "Darwin" ]]; then
+                        echo "Detected macOS, installing Docker for macOS"
+                        brew install --cask docker
+                    elif [[ -f /etc/debian_version ]]; then
+                        echo "Detected Debian/Ubuntu, installing Docker"
+                        sudo apt-get update
+                        sudo apt-get install -y docker.io
+                    else
+                        echo "Unsupported OS for automatic Docker installation"
+                        exit 1
+                    fi
+                    # Add user to the Docker group if applicable
+                    sudo usermod -aG docker $USER
                     newgrp docker
                 fi
-                """
+                '''
             }
         }
-        
+
         stage('Keploy Tests') {
             steps {
                 // Clone the git repository
