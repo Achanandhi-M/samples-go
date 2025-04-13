@@ -11,7 +11,7 @@ pipeline {
                 sh "curl --silent --location 'https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz' | tar xz  -C /tmp"
                 sh "mkdir -p /usr/local/bin &&  mv /tmp/keploy /usr/local/bin/keploy"
 
-                // switch to the directory where keploy folders is present and run the tests
+                // switch to the directory where keploy folders is present and run the test
                 dir('gin-mongo'){
 
                 sh"""
