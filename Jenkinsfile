@@ -1,23 +1,28 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'jenkins/jenkins:lts'
+            args '-u root -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker'
+        }
+    }
     
     environment {
-        // Set PATH globally for all steps
-        PATH = "/usr/local/bin:${env.HOME}/.keploy/bin:${env.PATH}"
-        // For Mac Docker, we may need to specify the Docker host
+        PATH = "/usr/local/bin:/usr/bin:${env.HOME}/.keploy/bin:${env.PATH}"
         DOCKER_HOST = "unix:///var/run/docker.sock"
     }
     
     stages {
-        stage('Setup Environment') {
+        stage('Verify Docker') {
             steps {
-                script {
-                    // Ensure docker is available
-                    sh 'docker --version'
-                }
+                sh '''
+                    echo "Checking Docker access..."
+                    ls -l /var/run/docker.sock
+                    docker --version
+                '''
             }
         }
         
+        // Rest of your stages remain the same
         stage('Checkout Code') {
             steps {
                 git branch: 'chore/include-jenkins-pipeline-for-go-app', 
@@ -62,5 +67,4 @@ pipeline {
             }
         }
     }
-
 }
