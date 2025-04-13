@@ -1,4 +1,3 @@
-jenkins ALL=(ALL) NOPASSWD: /bin/mv
 pipeline {
     agent any
     stages {
