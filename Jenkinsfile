@@ -8,7 +8,7 @@ pipeline {
                 git branch: 'chore/include-jenkins-pipeline-for-go-app', url: 'https://github.com/Achanandhi-M/samples-go'
 
                 // Download and prepare Keploy binary
-                sh "curl --silent --location 'https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz' | tar xz --overwrite -C /tmp"
+                sh "curl --silent --location 'https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz' | tar xz  -C /tmp"
                 sh "mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin/keploy"
 
                 // switch to the directory where keploy folders is present
