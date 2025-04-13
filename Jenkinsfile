@@ -7,7 +7,7 @@ pipeline {
                 git branch: 'chore/include-jenkins-pipeline-for-go-app', url: 'https://github.com/Achanandhi-M/samples-go'
 
                 // Download and install Keploy binary
-                sh "curl --silent -O -L https://keploy.io/install.sh && source install.sh"
+                sh "curl --silent -O -L https://keploy.io/install.sh && bash install.sh"
 
                 // switch to the directory and run test
                 dir('gin-mongo') {
