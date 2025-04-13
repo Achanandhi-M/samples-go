@@ -15,7 +15,7 @@ pipeline {
                 dir('gin-mongo'){
 
                 sh"""
-                keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 15
+                sudo keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 15
                 """
               }
             }
