@@ -13,9 +13,7 @@ pipeline {
 
                 // switch to the directory where keploy folder is present
                 dir('gin-mongo'){
-
-                // Make sure you have NPM in host machine and Install application dependencies.
-
+                    
                 sh"""
                 keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 10
                 """
