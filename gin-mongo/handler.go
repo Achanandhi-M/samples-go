@@ -49,7 +49,7 @@ func Upsert(ctx context.Context, u URL) error {
 	return nil
 }
 
-func getURL(c *gin.Context) {
+func GetURL(c *gin.Context) {
 	hash := c.Param("param")
 	if hash == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "please append url hash"})
@@ -65,7 +65,7 @@ func getURL(c *gin.Context) {
 	c.Redirect(http.StatusSeeOther, u.URL)
 }
 
-func putURL(c *gin.Context) {
+func PutURL(c *gin.Context) {
 	var m map[string]string
 
 	err := c.ShouldBindJSON(&m)

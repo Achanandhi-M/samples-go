@@ -46,8 +46,8 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET("/:param", getURL)
-	r.POST("/url", putURL)
+	r.GET("/:param", GetURL)
+	r.POST("/url", PutURL)
 	srv := &http.Server{
 		Addr:    ":" + port,
 		Handler: r,
