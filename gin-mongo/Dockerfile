@@ -39,7 +39,7 @@ ENTRYPOINT ["dumb-init"]
 USER keploy
 
 # Expose the port
-EXPOSE 8080
+EXPOSE 8081
 
 # Run the binary
 CMD ["./main"]

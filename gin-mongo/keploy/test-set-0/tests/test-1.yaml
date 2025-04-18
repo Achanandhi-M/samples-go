@@ -8,41 +8,41 @@ spec:
         method: POST
         proto_major: 1
         proto_minor: 1
-        url: http://localhost:8080/url
+        url: http://localhost:8081/url
         header:
             Accept: '*/*'
             Content-Length: "33"
             Content-Type: application/json
-            Host: localhost:8080
-            User-Agent: curl/8.7.1
+            Host: localhost:8081
+            User-Agent: curl/7.88.1
         body: |-
             {
               "url": "https://google.com"
             }
-        timestamp: 2025-04-17T16:18:49.109069267Z
+        timestamp: 2025-04-18T03:33:43.147905042Z
     resp:
         status_code: 200
         header:
             Content-Length: "65"
             Content-Type: application/json; charset=utf-8
-            Date: Thu, 17 Apr 2025 16:18:49 GMT
-        body: '{"ts":1744906729117965004,"url":"http://localhost:8080/Lhr4BWAi"}'
+            Date: Fri, 18 Apr 2025 03:33:43 GMT
+        body: '{"ts":1744947223163125880,"url":"http://localhost:8081/Lhr4BWAi"}'
         status_message: OK
         proto_major: 0
         proto_minor: 0
-        timestamp: 2025-04-17T16:18:51.16587513Z
+        timestamp: 2025-04-18T03:33:45.208227976Z
     objects: []
     assertions:
         noise:
             body.ts: []
             header.Date: []
-    created: 1744906731
+    created: 1744947225
 curl: |-
     curl --request POST \
-      --url http://localhost:8080/url \
-      --header 'Accept: */*' \
+      --url http://localhost:8081/url \
       --header 'Content-Type: application/json' \
-      --header 'Host: localhost:8080' \
-      --header 'User-Agent: curl/8.7.1' \
+      --header 'Host: localhost:8081' \
+      --header 'User-Agent: curl/7.88.1' \
+      --header 'Accept: */*' \
       --data "{\n  \"url\": \"https://google.com\"\n}"
 respType: json
