@@ -36,6 +36,7 @@ pipeline {
         stage('Run Keploy Tests') {
             steps {
                 sh '''
+                cd gin-mongo
                 sudo -E keploy test -c "go run main.go handler.go" --disableANSI
                 '''
             }
