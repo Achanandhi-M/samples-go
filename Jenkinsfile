@@ -17,7 +17,7 @@ pipeline {
                 sudo mount -t tracefs nodev /sys/kernel/tracing || true
 
                 go mod tidy
-                keploy test -c "go run main.go handler.go" --delay 40  --disableANSI
+                keploy test -c "go run main.go handler.go" --delay 30  --disableANSI
                 '''
             }
         }
