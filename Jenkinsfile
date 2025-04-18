@@ -5,6 +5,8 @@ pipeline {
             steps {
                 sh '''
                 sudo apt-get update && sudo apt-get install -y curl kmod linux-headers-generic bpfcc-tools git golang-go
+                # Remove existing repo directory if it exists
+                rm -rf samples-go
                 git clone 'https://github.com/Achanandhi-M/samples-go.git'
                 cd gin-mongo
 
