@@ -22,7 +22,7 @@ pipeline {
                 sudo mount -t tracefs nodev /sys/kernel/tracing || true
 
                 go mod tidy
-                keploy test -c "go run main.go handler.go" --delay 30 
+                keploy test -c "go run main.go handler.go" --delay 20 
                 '''
             }
         }
